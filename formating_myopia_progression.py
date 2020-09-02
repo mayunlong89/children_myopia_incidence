@@ -17,7 +17,7 @@ f1 = open("2.1.model1-common.txt", "r+")
 f2 = open("data_for_myopia_progression.txt","w+")
 
 
-#collect samples ID for excluding for further analysis
+#collect samples ID for excluding from further analysis
 ID_collect=[]
 lines=""
 for line in f1:
