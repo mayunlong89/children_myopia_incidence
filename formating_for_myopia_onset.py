@@ -20,7 +20,7 @@ f2 = open("data_for_onset_myopia.txt","w+")
 #f1 = open("test.txt", "r+")
 #f2 = open("data_for_onset_myopia_test3.txt","w+")
 
-#collect samples ID for excluding for further analysis
+#collect samples ID for excluding from further analysis
 ID_collect=[]
 lines=""
 for line in f1:
