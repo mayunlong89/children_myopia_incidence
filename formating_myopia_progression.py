@@ -9,6 +9,9 @@ Created on Wed Sep  2 16:28:27 2020
 #E-mail: glb-biotech@zju.edu.cn
 
 #This code was used for formating the data for Generalized mixed linear regression model on myopia progression
+
+#----------------Start------------------------------------------------
+
 f3 = open("2.1.model1-common.txt", "r+")
 f4 = open("data_for_myopia_progression.txt","w+")
 
@@ -61,4 +64,11 @@ print('Running time3: %s Seconds'%(end-start))
 
 f3.close()
 f4.close()
+
+
+
+#----------------End------------------------------------------------
+
+
+
 
