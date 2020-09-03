@@ -8,22 +8,23 @@ Created on Wed Sep  2 15:51:52 2020
 #Date:2020-09-02
 #E-mail: glb-biotech@zju.edu.cn
 
-#This code was used for formating the data for Cox proportional hazard model on onset of myopia.
+#This code was used for formating the data for Cox proportional hazard model on onset of myopia
 #remove od_SE >4 and its related ID.
 #remove individuals with myopia (od_result = 1,2) at baseline time point and its related ID.
 #generate a file of data_for_onset_myopia.txt for further Cox proportional hazard regression analysis by using the script of onset_myopia.r.
 
-import time #used for monitoring the time of script operating
-
 #------------Start-----------------------------
+
+import time #used for monitoring the time of script operating
 
 f1 = open("2.2.model2-common.txt", "r+")
 f1_1=open("2.2.model2-common.txt", "r+")
 f2 = open("data_for_onset_myopia.txt","w+")
+#f2 = open("data_for_onset_myopia_non_school_town.txt","w+")
 
 #test example
 #f1 = open("test.txt", "r+")
-#f2 = open("data_for_onset_myopia_test663.txt","w+")
+#f2 = open("data_for_onset_myopia_test.txt","w+")
 
 #collect samples ID for excluding from further analysis
 start =time.clock()
@@ -35,9 +36,10 @@ for line in f1:
     if dd[4] == "od_result":
         print("good, continue")
     else:
-        if int(dd[4])>3:
+        if int(dd[4])>3: #removing individuals with hyperopia, astigmatism and others
+        #if int(dd[4])>3 or int(dd[12]) == 0: #additional removing individuals with non information on Region of Habitation 
             ID_collect[dd[0]] = 1
-        if dd[6]=="0" and int(dd[4])>0:
+        if dd[6]=="0" and int(dd[4])>0: # remove samples with myopia at the baseline time point
             ID_collect[dd[0]] = 1
         
 #obtain unique ID    
@@ -68,8 +70,11 @@ f1.close()
 f2.close
 
 
-
 #------------End-----------------------------
+
+
+
+
 
 
 
