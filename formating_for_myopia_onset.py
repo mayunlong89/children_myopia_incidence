@@ -9,6 +9,9 @@ Created on Wed Sep  2 15:51:52 2020
 #E-mail: glb-biotech@zju.edu.cn
 
 #This code was used for formating the data for Cox proportional hazard model on onset of myopia
+#remove od_SE >4 and its related ID
+#remove individuals with myopia (od_result = 1,2) at baseline time point and its related ID
+#generate a file of data_for_onset_myopia.txt for further Cox proportional hazard regression analysis by using the script of onset_myopia.r and onset_high_myopia.r 
 
 import time #used for monitoring the time of script operating
 
@@ -47,8 +50,6 @@ print('Running time1: %s Seconds'%(end-start))
 
 
 #keep samples we need
-#remove od_SE >4 and its related ID
-#remove individuals with myopia at baseline time point and its related ID
 start =time.clock()
 #lines_out=''
 #new_data=lines.split("\n")
