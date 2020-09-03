@@ -5,6 +5,9 @@
 
 #This script was used to perform Cox proportional hazard regression model on the incidence of myopia in Chinese children.
 
+
+#------------Start-----------------------------
+
 #set the directory for the present script
 getwd()
 setwd("C:\\Users\\Administrator\\Desktop\\2020-9-1-final")
