@@ -13,13 +13,14 @@ Created on Wed Sep  2 15:51:52 2020
 #remove individuals with high myopia at baseline time point and its related ID
 #generate a file of data_for_onset_high_myopia.txt for further Cox proportional hazard regression analysis by using the script of onset_high_myopia.r.
 
-#------------------End-------------------------------------------------------------
+#------------Start-----------------------------
 
 import time #used for monitoring the time of script operating
 
-
 f1 = open("2.2.model2-common.txt", "r+")
 f2 = open("data_for_onset_high_myopia.txt","w+")
+#f2 = open("data_for_onset_high_myopia_non_school_town.txt","w+")
+
 
 #test example
 #f1 = open("test.txt", "r+")
@@ -35,7 +36,8 @@ for line in f1:
     if dd[4] == "od_result":
         print("good, continue")
     else:
-        if int(dd[4])>3:
+        if int(dd[4])>3: #removing individuals with hyperopia, astigmatism and others
+        #if int(dd[4])>3 or int(dd[12]) == 0: #additional removing individuals with non information on Region of Habitation     
             ID_collect[dd[0]] = 1
         if dd[6]=="0" and int(dd[4]) == 3: # remove samples with high myopia at the baseline time point
             ID_collect[dd[0]] = 1
@@ -68,6 +70,8 @@ f1.close()
 f2.close
 
 
-#------------------End-------------------------------------------------------------
+#------------End-----------------------------
+
+
 
 
