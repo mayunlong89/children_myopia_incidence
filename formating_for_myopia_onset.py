@@ -10,13 +10,12 @@ Created on Wed Sep  2 15:51:52 2020
 
 #This code was used for formating the data for Cox proportional hazard model on onset of myopia
 
-
-#--------------------Start----------------------------------
-
 import time #used for monitoring the time of script operating
 
+#------------Start-----------------------------
 
 f1 = open("2.2.model2-common.txt", "r+")
+f1_1=open("2.2.model2-common.txt", "r+")
 f2 = open("data_for_onset_myopia.txt","w+")
 
 #test example
@@ -30,11 +29,14 @@ ID_collect={}
 for line in f1:
     dd = line.strip().split("\t")
     #lines=lines+line
-    if dd[4] != "od_result" and int(dd[4])>3:
-        ID_collect[dd[0]] = 1
-    if dd[4]=="0" and dd[6]=="0":
-        ID_collect[dd[0]] = 1
-
+    if dd[4] == "od_result":
+        print("good, continue")
+    else:
+        if int(dd[4])>3:
+            ID_collect[dd[0]] = 1
+        if dd[6]=="0" and int(dd[4])>0:
+            ID_collect[dd[0]] = 1
+        
 #obtain unique ID    
 #remove_id = set(ID_collect)
 #
@@ -50,7 +52,7 @@ print('Running time1: %s Seconds'%(end-start))
 start =time.clock()
 #lines_out=''
 #new_data=lines.split("\n")
-for x in open("2.2.model2-common.txt", "r+"):
+for x in f1_1:
     tt = x.strip().split("\t")
     if tt[0] not in ID_collect:
         f2.write("\t".join(tt) + "\n")
@@ -59,18 +61,12 @@ f2.write("\t".join(tt) + "\n")
 #out_file = lines_out
 #f2.write(out_file)
 end = time.clock()
-print('Running time2: %s Seconds'%(end-start))
+print('Running time3: %s Seconds'%(end-start))
 
 f1.close() 
 f2.close
 
 
 
-#--------------------End----------------------------------
-
-
-
-
-
-
+#------------End-----------------------------
 
